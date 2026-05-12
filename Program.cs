@@ -38,100 +38,100 @@ namespace BankingServices
             Console.WriteLine("13) Avg Monthly Balance (double) current: 0.000 OMR ");
             Console.WriteLine("0) Setup complete - Launch Main Menu");
 
-            int option = 0;
-            while (option != -1)
+            int option = -1;
+            while (option != 0)
             {
-                Console.Write("   Select option: ");
-                int option1 = int.Parse(Console.ReadLine());
+                Console.Write("Select option: ");
+                option = int.Parse(Console.ReadLine());
 
-                switch (option1)
+                switch (option)
                 {
                     // set accunt number 
                     case 1:
-                        Console.WriteLine("Enter account number: ");
+                        Console.Write("Enter account number: ");
                         accountNumber = int.Parse(Console.ReadLine());
                         Console.WriteLine("Account number set to: " + accountNumber);
                         break;
                     // Set holder name
                     case 2:
-                        Console.WriteLine("Enter holder name: ");
+                        Console.Write("Enter holder name: ");
                         holderName = Console.ReadLine();
                         Console.WriteLine("Holder name set to: " + holderName);
                         break;
 
                     // Set balance
                     case 3:
-                        Console.WriteLine("Enter balance (OMR): ");
+                        Console.Write("Enter balance (OMR): ");
                         balance = double.Parse(Console.ReadLine());
                         Console.WriteLine("Balance set to: " + balance.ToString("0.000") + " OMR");
                         break;
 
                     // Set account active status
                     case 4:
-                        Console.WriteLine("Enter 1 for Yes / 0 for No: ");
+                        Console.Write("Enter 1 for Yes / 0 for No: ");
                         isActive = int.Parse(Console.ReadLine()) == 1;
                         Console.WriteLine("Account active: " + isActive);
                         break;
 
                     // Set account type
                     case 5:
-                        Console.WriteLine("Enter account type (S/C/F): ");
+                        Console.Write("Enter account type (S/C/F): ");
                         accountType = char.Parse(Console.ReadLine());
                         Console.WriteLine("Account type set to: " + accountType);
                         break;
 
                     // Set employment status
                     case 6:
-                        Console.WriteLine("Enter 1 for Yes / 0 for No: ");
+                        Console.Write("Enter 1 for Yes / 0 for No: ");
                         isEmployed = int.Parse(Console.ReadLine()) == 1;
                         Console.WriteLine("Employment status: " + isEmployed);
                         break;
 
                     // Set monthly salary
                     case 7:
-                        Console.WriteLine("Enter monthly salary: ");
+                        Console.Write("Enter monthly salary: ");
                         salary = double.Parse(Console.ReadLine());
                         Console.WriteLine("Monthly salary set to: " + salary.ToString("0.000") + " OMR");
                         break;
 
                     // Set credit score
                     case 8:
-                        Console.WriteLine("Enter credit score: ");
+                        Console.Write("Enter credit score: ");
                         creditScore = int.Parse(Console.ReadLine());
                         Console.WriteLine("Credit score set to: " + creditScore);
                         break;
 
                     // Set age
                     case 9:
-                        Console.WriteLine("\nEnter age: ");
+                        Console.Write("\nEnter age: ");
                         age = int.Parse(Console.ReadLine());
                         Console.WriteLine("Age set to: " + age);
                         break;
 
                     // Set last deposit amount
                     case 10:
-                        Console.WriteLine("\nEnter last deposit amount: ");
+                        Console.Write("\nEnter last deposit amount: ");
                         deposit = double.Parse(Console.ReadLine());
                         Console.WriteLine("Last deposit set to: " + deposit.ToString("0.000") + " OMR");
                         break;
 
                     // Set last withdrawal amount
                     case 11:
-                        Console.WriteLine("Enter last withdrawal amount: ");
+                        Console.Write("Enter last withdrawal amount: ");
                         withdrawal = double.Parse(Console.ReadLine());
                         Console.WriteLine("Last withdrawal set to: " + withdrawal.ToString("0.000") + " OMR");
                         break;
 
                     // Set annual interest rate
                     case 12:
-                        Console.WriteLine("Enter annual interest rate: ");
+                        Console.Write("Enter annual interest rate: ");
                         annualRate = double.Parse(Console.ReadLine());
                         Console.WriteLine("Interest rate set to: " + annualRate);
                         break;
 
                     // Set average monthly balance
                     case 13:
-                        Console.WriteLine("Enter average monthly balance: ");
+                        Console.Write("Enter average monthly balance: ");
                         avgBalance = double.Parse(Console.ReadLine());
                         Console.WriteLine("Average monthly balance set to: " + avgBalance.ToString("0.000") + " OMR");
                         break;
@@ -147,8 +147,108 @@ namespace BankingServices
                         break;
                 }
 
+            }// end while loop
+            /*
+            NATIONAL BANK OF OMAN  —  Unified Banking System
+            Task 1  →  System Setup (populate all shared variables first)
+            MAIN MENU  (available after setup)
+              1) ATM Services  →  Tasks  2,  3,  4,  5        
+              2) Account Management  →  Tasks  6,  7,  8
+              3) Loan Services   →  Tasks  9, 10, 11     
+              4) Currency Exchange   →  Tasks 12, 13   
+              5) Credit Card Portal  →  Tasks 14, 15  
+              6) Branch Services     →  Tasks 16, 17, 18   
+              7) Reports & Admin     →  Tasks 19, 20, 21   
+             */
+
+            Console.WriteLine(" === SYSTEM SETUP  —  Enter Account & Customer Data ===");
+            Console.WriteLine("--- Account Profile --- ");
+            Console.WriteLine(" ===== MAIN MENU =====  ");
+            Console.WriteLine("  1) ATM Services       ");
+            Console.WriteLine("  2) Account Management ");
+            Console.WriteLine("  3) Loan Services      ");
+            Console.WriteLine("  4) Currency Exchange  ");
+            Console.WriteLine("  5) Credit Card Portal ");
+            Console.WriteLine("  6) Branch Services    ");
+            Console.WriteLine("  7) Reports & Admin    ");
+            Console.WriteLine("  Enter your option:    ");
+            int option1 = int.Parse(Console.ReadLine());
+            switch (option1)
+            {
+                case 1:
+                    Console.WriteLine(" == ATM SERVICES ==");
+                    Console.WriteLine(" 1) Bank Info ");
+                    Console.WriteLine(" 2) Branch Info ");
+                    Console.WriteLine(" 3) Opening Hours");
+                    Console.WriteLine(" 0) Back to Main Menu");
+                    Console.WriteLine("Select: ");
+                    int AtmOption = int.Parse(Console.ReadLine());
+                    switch (AtmOption)
+                    {
+                        case 1:
+                            Console.WriteLine("===== BANK INFO =====");
+                            Console.WriteLine("Bank Name   : National Bank of Oman");
+                            Console.WriteLine("Tagline     : Together We Prosper");
+                            Console.WriteLine("Founded Year: 1973");
+                            break;
+                        case 2:
+                            Console.WriteLine("===== BRANCH INFO =====");
+                            Console.WriteLine("Branch Name : Muscat Main Branch");
+                            Console.WriteLine("City        : Muscat");
+                            Console.WriteLine("Address     : Sultan Qaboos Street");
+                            break;
+                        case 3:
+                            Console.WriteLine("===== OPENING HOURS =====");
+                            Console.WriteLine("Weekdays : 8:00 AM - 3:00 PM");
+                            Console.WriteLine("Weekend  : Closed");
+                            break;
+                        case 0:
+                            Console.WriteLine("Returning to Main Menu...");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid selection. Please try again.");
+                            break;
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine(" === VIEW ACCOUNT DATA === ");
+                    Console.WriteLine(" Data loaded from system setup ");
+                    Console.WriteLine(" 1) Account Number → " + accountNumber);
+                    Console.WriteLine(" 2) Holder Name → " + holderName);
+                    Console.WriteLine(" 3) Balance → " + balance);
+                    Console.WriteLine(" 4) Account Status → "+ isActive);
+                    Console.WriteLine(" 5) Account Type → " + accountType);
+                    Console.WriteLine(" 0) Back ");
+                    Console.WriteLine(" Select field: ");
+                    int AccountOption = int.Parse(Console.ReadLine());
+                    switch (AccountOption)
+                    {
+                        case 1:
+                            Console.WriteLine(" 1) Account Number → " + accountNumber);
+                            break;
+                        case 2:
+                            Console.WriteLine(" 2) Holder Name → " + holderName);
+                            break;
+                        case 3:
+                            Console.WriteLine(" 3) Balance → " + balance);
+                            break;
+                        case 4:
+                            Console.WriteLine(" 4) Account Status → " + isActive);
+                            break;
+                        case 5:
+                            Console.WriteLine(" 5) Account Type → " + accountType);
+                            break;
+                        case 0:
+                            Console.WriteLine("Returning to Main Menu...");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid selection. Please try again.");
+                            break;
+                    }
+
+                    break;
             }
-           
+
 
 
 
