@@ -161,7 +161,7 @@ namespace BankingServices
               6) Branch Services     →  Tasks 16, 17, 18   
               7) Reports & Admin     →  Tasks 19, 20, 21   
              */
-
+            //Task 2
             Console.WriteLine(" === SYSTEM SETUP  —  Enter Account & Customer Data ===");
             Console.WriteLine("--- Account Profile --- ");
             Console.WriteLine(" ===== MAIN MENU =====  ");
@@ -211,6 +211,8 @@ namespace BankingServices
                             break;
                     }
                     break;
+
+                // Task 3
                 case 2:
                     Console.WriteLine(" === VIEW ACCOUNT DATA === ");
                     Console.WriteLine(" Data loaded from system setup ");
@@ -248,6 +250,8 @@ namespace BankingServices
                     }
 
                     break;
+
+                //Task 4
                 case 3:
                     const int CORRECT_PIN = 4821;
                     const int MAX_ATTEMPTS = 3;
@@ -320,7 +324,7 @@ namespace BankingServices
                     }
 
                     break;
-
+                 //Task 5
                 case 4:
                     Console.WriteLine(" === PRINT RECEIPT === ");
                     Console.WriteLine(" 1) Short Receipt ");
@@ -354,7 +358,7 @@ namespace BankingServices
                             break;
                     }
                     break;
-
+                 //Task 6
                 case 5:
                     Console.WriteLine("=== TRANSACTION CALCULATOR === ");
                     Console.WriteLine(" Using: balance = " + balance + "deposit = " + deposit + "rate =" + annualRate);
@@ -400,42 +404,104 @@ namespace BankingServices
                             Console.WriteLine("Returning to Main Menu...");
                             break;
                         default:
-                            Console.WriteLine("Invalid selection. Please try again.");
+                            Console.WriteLine("Calculation not available.");
                             break;
                     }
 
                     break;
+                //Task 8
+                case 6:
+                    Console.WriteLine("=== LOAN ELIGIBILITY === ");
+                    Console.WriteLine(" Holder:" + holderName + "| Salary:" + salary + "OMR" + "|  Score:" + creditScore + "|  Age:"+ age);
+                    Console.WriteLine(" 1) Personal Loan  ");
+                    Console.WriteLine(" 2) Car Loan ");
+                    Console.WriteLine(" 3) Home Loan ");
+                    Console.WriteLine(" 0) Back ");
+                    Console.WriteLine(" Select type: ");
+                    int logOption = int.Parse(Console.ReadLine());
+                    switch (logOption)
+                    {
+                        case 1:
+                            Console.WriteLine(" === Personal Loan === ");
+                            if(isEmployed && salary >= 400 && creditScore > 650)
+                            {
+                                Console.WriteLine(" Eligible — application accepted. ");
+                            }
+                            else
+                            {
+                                Console.WriteLine(" 'Not eligible. ");
+                                if (!isEmployed)
+                                {
+                                    Console.WriteLine(" Not employed");
+                                }
+                                if(salary < 400)
+                                {
+                                    Console.WriteLine("  Salary must be at least 400 OMR");
+                                }
+                                if(creditScore <= 650)
+                                {
+                                    Console.WriteLine("Credit score must be above 650");
+                                }
+                            }
+                            break;
+                        case 2:
+                            Console.WriteLine("=== Car Loan ===");
+
+                            if (isEmployed && salary >= 600 && age >= 21)
+                            {
+                                Console.WriteLine("Eligible — application accepted.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Not eligible.");
+
+                                if (!isEmployed)
+                                    Console.WriteLine(" not employed.");
+
+                                if (salary < 600)
+                                    Console.WriteLine("Salary must be at least 600 OMR.");
+
+                                if (age < 21)
+                                    Console.WriteLine(" Age must be at least 21.");
+                            }
+                            break;
+                        case 3:
+                            Console.WriteLine("=== Home Loan ===");
+
+                            if (isEmployed && salary >= 1000 && creditScore > 700 && age >= 25)
+                            {
+                                Console.WriteLine("Eligible — application accepted.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Not eligible.");
+
+                                if (!isEmployed)
+                                    Console.WriteLine("not employed.");
+
+                                if (salary < 1000)
+                                    Console.WriteLine("Salary must be at least 1000 OMR.");
+
+                                if (creditScore <= 700)
+                                    Console.WriteLine("Credit score must be above 700.");
+
+                                if (age < 25)
+                                    Console.WriteLine("Age must be at least 25.");
+                            }
+                            break;
+                        case 0:
+                            Console.WriteLine("Returning to Main Menu...");
+                            break;
+                        default:
+                            Console.WriteLine("Loan product not offered.");
+                            break;
+
+                    }
+
+ 
+
+                    break;
             } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
-        
+        }     
     }
 }
