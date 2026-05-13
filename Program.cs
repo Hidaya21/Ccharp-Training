@@ -247,6 +247,68 @@ namespace BankingServices
                     }
 
                     break;
+                case 3:
+                    const int CORRECT_PIN = 4821;
+                    const int MAX_ATTEMPTS = 3;
+                    
+                    Console.WriteLine(" === AUTHENTICATION === ");
+                    Console.WriteLine(" 1) Enter PIN ");
+                    Console.WriteLine(" 2) Forgot PIN ");
+                    Console.WriteLine(" 0) Back ");
+                    
+                    
+
+                    while (option != 0) {
+                        Console.WriteLine(" Select:  ");
+                        int AuthOption = int.Parse(Console.ReadLine());
+                        switch (AuthOption)
+                        {
+                           
+                            case 1:
+                            int attemps = 0;
+                            bool accessGranted = false;
+                                while (attemps < MAX_ATTEMPTS && !accessGranted)
+                                {
+                                    Console.WriteLine(" Enter 4 digits PIN: ");
+                                    string PINOption = Console.ReadLine();
+                                    //Check PIN length 
+                                    if (PINOption.Length != 4)
+                                    { Console.WriteLine("Invalid PIN format."); }
+                                    else
+                                    {
+                                        int Pin = int.Parse(PINOption);
+                                        //Check correct PIN
+                                        if (Pin == CORRECT_PIN)
+                                        {
+                                            Console.WriteLine("Access granted. Welcome" + holderName);
+                                            accessGranted = true;
+                                        }
+
+                                        else
+                                        { Console.WriteLine("Incorrect PIN"); }
+                                        attemps++;
+                                    }
+                                    if (!accessGranted)
+                                    { 
+                                        Console.WriteLine(" Maximum attemps reached! ");
+                                    }
+                                       
+                                }
+
+                                break;
+                            case 2:
+                                Console.WriteLine(" 'Please visit the nearest branch with your National ID.");
+                                break;
+                            case 0:
+                                Console.WriteLine("Returning to Main Menu...");
+                                break;
+                            default:
+                                Console.WriteLine("Invalid selection. Please try again.");
+                                break;
+                        }
+                    }
+            
+                    break;
             }
 
 
