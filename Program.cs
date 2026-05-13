@@ -22,26 +22,29 @@ namespace BankingServices
             double annualRate = 0.0;
             double avgBalance = 0.0;
 
-            Console.WriteLine("1)  Account Number      (int)    current: 0 ");
-            Console.WriteLine("2)  Holder Name         (string) current: [not set]");
-            Console.WriteLine("3)  Balance             (double) current: 0.000 OMR ");
-            Console.WriteLine("4)  Account Active?     (bool)   current: false   [enter 1=yes / 0=no] ");
-            Console.WriteLine("5)  Account Type        (char)   current:   [enter S / C / F]");
-            Console.WriteLine(" --- Customer Profile ---");
-            Console.WriteLine("6)  Employed?           (bool)   current: false [enter 1=yes / 0=no]");
-            Console.WriteLine("7)  Monthly Salary      (double) current: 0.000 OMR ");
-            Console.WriteLine("8)  Credit Score        (int)    current: 0 ");
-            Console.WriteLine("9)  Age                 (int)    current: 0 ");
-            Console.WriteLine(" --- Transaction Data ---");
-            Console.WriteLine("10) Last Deposit Amount (double) current: 0.000 OMR");
-            Console.WriteLine("11) Last Withdrawal     (double) current: 0.000 OMR");
-            Console.WriteLine("12) Annual Interest Rate(double) current:0.000  [e.g. 0.035 = 3.5%]");
-            Console.WriteLine("13) Avg Monthly Balance (double) current: 0.000 OMR ");
-            Console.WriteLine("0) Setup complete - Launch Main Menu");
 
             int option = -1;
             while (option != 0)
             {
+
+                Console.WriteLine("1)  Account Number      (int)    current: 0 ");
+                Console.WriteLine("2)  Holder Name         (string) current: [not set]");
+                Console.WriteLine("3)  Balance             (double) current: 0.000 OMR ");
+                Console.WriteLine("4)  Account Active?     (bool)   current: false   [enter 1=yes / 0=no] ");
+                Console.WriteLine("5)  Account Type        (char)   current:   [enter S / C / F]");
+                Console.WriteLine(" --- Customer Profile ---");
+                Console.WriteLine("6)  Employed?           (bool)   current: false [enter 1=yes / 0=no]");
+                Console.WriteLine("7)  Monthly Salary      (double) current: 0.000 OMR ");
+                Console.WriteLine("8)  Credit Score        (int)    current: 0 ");
+                Console.WriteLine("9)  Age                 (int)    current: 0 ");
+                Console.WriteLine(" --- Transaction Data ---");
+                Console.WriteLine("10) Last Deposit Amount (double) current: 0.000 OMR");
+                Console.WriteLine("11) Last Withdrawal     (double) current: 0.000 OMR");
+                Console.WriteLine("12) Annual Interest Rate(double) current:0.000  [e.g. 0.035 = 3.5%]");
+                Console.WriteLine("13) Avg Monthly Balance (double) current: 0.000 OMR ");
+                Console.WriteLine("0) Setup complete - Launch Main Menu");
+
+
                 Console.Write("Select option: ");
                 option = int.Parse(Console.ReadLine());
 
@@ -104,14 +107,14 @@ namespace BankingServices
 
                     // Set age
                     case 9:
-                        Console.Write("\nEnter age: ");
+                        Console.Write("Enter age: ");
                         age = int.Parse(Console.ReadLine());
                         Console.WriteLine("Age set to: " + age);
                         break;
 
                     // Set last deposit amount
                     case 10:
-                        Console.Write("\nEnter last deposit amount: ");
+                        Console.Write("Enter last deposit amount: ");
                         deposit = double.Parse(Console.ReadLine());
                         Console.WriteLine("Last deposit set to: " + deposit.ToString("0.000") + " OMR");
                         break;
@@ -146,8 +149,12 @@ namespace BankingServices
                     default:
                         Console.WriteLine("Invalid option. Please try again.");
                         break;
+                        
                 }
 
+                Console.WriteLine("press any key to contiue");
+                Console.ReadLine();
+                Console.Clear();
             }// end while loop
             /*
             NATIONAL BANK OF OMAN  —  Unified Banking System
@@ -313,14 +320,6 @@ namespace BankingServices
                                 Console.WriteLine("Invalid selection. Please try again.");
                                 break;
                         }
-                        if (AuthOption != 0)
-                        {
-                            Console.WriteLine("Press any key to continue...");
-                            Console.ReadKey();
-
-
-                        }
-
                     }
 
                     break;
@@ -336,7 +335,8 @@ namespace BankingServices
                     switch (PrcOption)
                     {
                         case 1:
-                            Console.WriteLine("Account :" + accountNumber);
+                            String AccNum = accountNumber.ToString();
+                            Console.WriteLine("Account :"+ "****" + AccNum.Substring(AccNum.Length-4));
                             Console.WriteLine("Holder :" + holderName);
                             Console.WriteLine("Balance :" + balance + "OMR");
                             break;
@@ -495,12 +495,9 @@ namespace BankingServices
                         default:
                             Console.WriteLine("Loan product not offered.");
                             break;
-
                     }
-
- 
-
                     break;
+                
             } 
         }     
     }
