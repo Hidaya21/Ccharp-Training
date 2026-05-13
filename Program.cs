@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic.FileIO;
+using System.Security.Principal;
 
 namespace BankingServices
 {
@@ -255,12 +256,11 @@ namespace BankingServices
                     Console.WriteLine(" 1) Enter PIN ");
                     Console.WriteLine(" 2) Forgot PIN ");
                     Console.WriteLine(" 0) Back ");
-                    
-                    
+                    Console.WriteLine(" Select:  ");
+                    int AuthOption = int.Parse(Console.ReadLine());
 
-                    while (option != 0) {
-                        Console.WriteLine(" Select:  ");
-                        int AuthOption = int.Parse(Console.ReadLine());
+
+                    while (AuthOption != 0) {
                         switch (AuthOption)
                         {
                            
@@ -271,12 +271,14 @@ namespace BankingServices
                                 {
                                     Console.WriteLine(" Enter 4 digits PIN: ");
                                     string PINOption = Console.ReadLine();
+
                                     //Check PIN length 
                                     if (PINOption.Length != 4)
                                     { Console.WriteLine("Invalid PIN format."); }
                                     else
                                     {
                                         int Pin = int.Parse(PINOption);
+
                                         //Check correct PIN
                                         if (Pin == CORRECT_PIN)
                                         {
@@ -288,12 +290,13 @@ namespace BankingServices
                                         { Console.WriteLine("Incorrect PIN"); }
                                         attemps++;
                                     }
+                                }
                                     if (!accessGranted)
                                     { 
                                         Console.WriteLine(" Maximum attemps reached! ");
                                     }
                                        
-                                }
+                                
 
                                 break;
                             case 2:
@@ -306,10 +309,103 @@ namespace BankingServices
                                 Console.WriteLine("Invalid selection. Please try again.");
                                 break;
                         }
+                        if (AuthOption != 0)
+                        {
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey();
+
+
+                        }
+
                     }
-            
+
                     break;
-            }
+
+                case 4:
+                    Console.WriteLine(" === PRINT RECEIPT === ");
+                    Console.WriteLine(" 1) Short Receipt ");
+                    Console.WriteLine(" 2) Detailed Receipt ");
+                    Console.WriteLine(" 3) Balance Only ");
+                    Console.WriteLine(" 0) Back ");
+                    Console.WriteLine(" Select format: ");
+                    int PrcOption = int.Parse(Console.ReadLine());
+                    switch (PrcOption)
+                    {
+                        case 1:
+                            Console.WriteLine("Account :" + accountNumber);
+                            Console.WriteLine("Holder :" + holderName);
+                            Console.WriteLine("Balance :" + balance + "OMR");
+                            break;
+                        case 2:
+                            Console.WriteLine("Account :" + accountNumber);
+                            Console.WriteLine("Holder :" + holderName);
+                            Console.WriteLine("Balance :" + balance + "OMR");
+                            Console.WriteLine("Account Active :" + isActive);
+                            Console.WriteLine("Account Type :" + accountType);
+                            break;
+                        case 3:
+                            Console.WriteLine("Balance :" + balance + "OMR");
+                            break;
+                        case 0:
+                            Console.WriteLine("Returning to Main Menu...");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid selection. Please try again.");
+                            break;
+                    }
+                    break;
+
+                case 5:
+                    Console.WriteLine("=== TRANSACTION CALCULATOR === ");
+                    Console.WriteLine(" Using: balance = " + balance + "deposit = " + deposit + "rate =" + annualRate);
+                    Console.WriteLine(" 1) Balance After Deposit ");
+                    Console.WriteLine(" 2) Balance After Withdrawal ");
+                    Console.WriteLine(" 3) Annual Interest Earned ");
+                    Console.WriteLine(" 4) Net Balance Change ");
+                    Console.WriteLine(" 0) Back ");
+                    Console.WriteLine(" Select calculation:  ");
+                    int calOption = int.Parse(Console.ReadLine());
+                    switch (calOption)
+                    {
+                        case 1:
+                            double afterDep = deposit + balance;
+                            Console.WriteLine("After deposit: " + afterDep + "OMR");
+                            break;
+                        case 2:
+                            double afterWithdrawal = balance - withdrawal;
+                            Console.WriteLine("After Withdrawal: " + afterWithdrawal + "OMR");
+                            break;
+                        case 3:
+                            double interest = balance * annualRate;
+                            Console.WriteLine("Rate applied: " + annualRate);
+                            Console.WriteLine(" interest amount: " + interest);
+                            break;
+                        case 4:
+                            double net = deposit - withdrawal;
+                            if (net > 0)
+                            {
+                                Console.WriteLine("Surplus");
+                            }
+                            else if (net < 0)
+                            {
+                                Console.WriteLine("Deficit");
+                            }
+                            else
+                            {
+                                Console.WriteLine("net not change ");
+                            }
+                            Console.WriteLine("net change: " + net);
+                          break;
+                        case 0:
+                            Console.WriteLine("Returning to Main Menu...");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid selection. Please try again.");
+                            break;
+                    }
+
+                    break;
+            } 
 
 
 
