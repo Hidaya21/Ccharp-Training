@@ -149,7 +149,7 @@ namespace BankingServices
                     default:
                         Console.WriteLine("Invalid option. Please try again.");
                         break;
-                        
+
                 }
 
                 Console.WriteLine("press any key to contiue");
@@ -226,7 +226,7 @@ namespace BankingServices
                     Console.WriteLine(" 1) Account Number → " + accountNumber);
                     Console.WriteLine(" 2) Holder Name → " + holderName);
                     Console.WriteLine(" 3) Balance → " + balance);
-                    Console.WriteLine(" 4) Account Status → "+ isActive);
+                    Console.WriteLine(" 4) Account Status → " + isActive);
                     Console.WriteLine(" 5) Account Type → " + accountType);
                     Console.WriteLine(" 0) Back ");
                     Console.WriteLine(" Select field: ");
@@ -262,7 +262,7 @@ namespace BankingServices
                 case 3:
                     const int CORRECT_PIN = 4821;
                     const int MAX_ATTEMPTS = 3;
-                    
+
                     Console.WriteLine(" === AUTHENTICATION === ");
                     Console.WriteLine(" 1) Enter PIN ");
                     Console.WriteLine(" 2) Forgot PIN ");
@@ -271,13 +271,14 @@ namespace BankingServices
                     int AuthOption = int.Parse(Console.ReadLine());
 
 
-                    while (AuthOption != 0) {
+                    while (AuthOption != 0)
+                    {
                         switch (AuthOption)
                         {
-                           
+
                             case 1:
-                            int attemps = 0;
-                            bool accessGranted = false;
+                                int attemps = 0;
+                                bool accessGranted = false;
                                 while (attemps < MAX_ATTEMPTS && !accessGranted)
                                 {
                                     Console.WriteLine(" Enter 4 digits PIN: ");
@@ -302,12 +303,12 @@ namespace BankingServices
                                         attemps++;
                                     }
                                 }
-                                    if (!accessGranted)
-                                    { 
-                                        Console.WriteLine(" Maximum attemps reached! ");
-                                    }
-                                       
-                                
+                                if (!accessGranted)
+                                {
+                                    Console.WriteLine(" Maximum attemps reached! ");
+                                }
+
+
 
                                 break;
                             case 2:
@@ -323,7 +324,7 @@ namespace BankingServices
                     }
 
                     break;
-                 //Task 5
+                //Task 5
                 case 4:
                     Console.WriteLine(" === PRINT RECEIPT === ");
                     Console.WriteLine(" 1) Short Receipt ");
@@ -336,7 +337,7 @@ namespace BankingServices
                     {
                         case 1:
                             String AccNum = accountNumber.ToString();
-                            Console.WriteLine("Account :"+ "****" + AccNum.Substring(AccNum.Length-4));
+                            Console.WriteLine("Account :" + "****" + AccNum.Substring(AccNum.Length - 4));
                             Console.WriteLine("Holder :" + holderName);
                             Console.WriteLine("Balance :" + balance + "OMR");
                             break;
@@ -358,7 +359,7 @@ namespace BankingServices
                             break;
                     }
                     break;
-                 //Task 6
+                //Task 6
                 case 5:
                     Console.WriteLine("=== TRANSACTION CALCULATOR === ");
                     Console.WriteLine(" Using: balance = " + balance + "deposit = " + deposit + "rate =" + annualRate);
@@ -399,7 +400,7 @@ namespace BankingServices
                                 Console.WriteLine("net not change ");
                             }
                             Console.WriteLine("net change: " + net);
-                          break;
+                            break;
                         case 0:
                             Console.WriteLine("Returning to Main Menu...");
                             break;
@@ -412,7 +413,7 @@ namespace BankingServices
                 //Task 8
                 case 6:
                     Console.WriteLine("=== LOAN ELIGIBILITY === ");
-                    Console.WriteLine(" Holder:" + holderName + "| Salary:" + salary + "OMR" + "|  Score:" + creditScore + "|  Age:"+ age);
+                    Console.WriteLine(" Holder:" + holderName + "| Salary:" + salary + "OMR" + "|  Score:" + creditScore + "|  Age:" + age);
                     Console.WriteLine(" 1) Personal Loan  ");
                     Console.WriteLine(" 2) Car Loan ");
                     Console.WriteLine(" 3) Home Loan ");
@@ -423,7 +424,7 @@ namespace BankingServices
                     {
                         case 1:
                             Console.WriteLine(" === Personal Loan === ");
-                            if(isEmployed && salary >= 400 && creditScore > 650)
+                            if (isEmployed && salary >= 400 && creditScore > 650)
                             {
                                 Console.WriteLine(" Eligible — application accepted. ");
                             }
@@ -434,11 +435,11 @@ namespace BankingServices
                                 {
                                     Console.WriteLine(" Not employed");
                                 }
-                                if(salary < 400)
+                                if (salary < 400)
                                 {
                                     Console.WriteLine("  Salary must be at least 400 OMR");
                                 }
-                                if(creditScore <= 650)
+                                if (creditScore <= 650)
                                 {
                                     Console.WriteLine("Credit score must be above 650");
                                 }
@@ -497,8 +498,9 @@ namespace BankingServices
                             break;
                     }
                     break;
-                
-            } 
-        }     
+
+            }
+        }
     }
 }
+
