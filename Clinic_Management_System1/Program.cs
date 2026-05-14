@@ -242,18 +242,109 @@ namespace Clinic_Management_System
                                     string name = Console.ReadLine();
                                     if (name == "")
                                     {
-                                        Console.Write("error and stop!");
+                                        Console.WriteLine("error and stop!");
                                         return;
                                     }
-                                    Console.Write("Enter doctor name: ");
-                                    string fee = Console.ReadLine();
+                                    Console.Write("Enter specialization: ");
+                                    string specialization = Console.ReadLine();
+                                    if (specialization == "")
+                                    {
+                                        Console.WriteLine("error and stop!");
+                                        return;
+                                    }
+                                    Console.Write("Enter fee: ");
+                                    double fee = Convert.ToDouble(Console.ReadLine());      
+                                    if (fee < 0)
+                                    {
+                                        Console.WriteLine("error and stop!");
+                                        return;
+                                    }
+                                    if (!d1Active)
+                                    {
+                                        d1Name = name;
+                                        d1Spec = specialization;
+                                        d1Fee = fee;
+                                        d1Active = true;
+                                    }
+                                    else if (!d2Active)
+                                    {
+                                        d2Name = name;
+                                        d2Spec = specialization;
+                                        d2Fee = fee;
+                                        d2Active = true;
+                                    }
+                                    doctorCount++;
+
+                                    Console.WriteLine("Doctor added successfully.");
 
                                     break;
                                 case 2:
-                                    break;
+                                    if(doctorCount == 0)
+                                    {
+                                        Console.WriteLine("No doctors registered.");
+                                    }
+                                    if (d1Active)
+                                    {
+                                        Console.WriteLine(d1Name, d1Spec, d1Fee);
+                                    }
+                                    if (d2Active)
+                                    {
+                                        Console.WriteLine(d2Name, d2Spec, d2Fee);
+
+                                    }
+                                        break;
                                 case 3:
+                                    Console.Write("Enter doctor name to update fee: ");
+                                    string updateName = Console.ReadLine();                    
+                                    if (d1Active && d1Name == updateName)
+                                    {
+                                        Console.Write("Enter new fee: ");
+                                        double newFee = Convert.ToDouble(Console.ReadLine());                        
+                                        if (newFee < 0)
+                                        {
+                                            Console.WriteLine("error and stop!");
+                                            return;
+                                        }
+                                        d1Fee = newFee;
+                                        Console.WriteLine("Fee updated.");
+                                    }
+                                    else if (d2Active && d2Name == updateName)
+                                    {
+                                        Console.Write("Enter new fee: ");
+                                        double newFee = Convert.ToDouble(Console.ReadLine());
+                                        if (newFee < 0)
+                                        {
+                                            Console.WriteLine("error and stop!");
+                                            return;
+                                        }
+                                        d2Fee = newFee;
+                                        Console.WriteLine("Fee updated.");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Doctor not found.");
+                                    }
                                     break;
+
                                 case 4:
+                                    Console.Write("Enter doctor name to delete: ");
+                                    string deleteName = Console.ReadLine();
+                                    if (d1Active && d1Name == deleteName)
+                                    {
+                                        doctorCount--;
+                                        Console.WriteLine("Doctor removed.");
+                                    }
+                                    else if (d2Active && d2Name == deleteName)
+                                    {
+                                       
+                                        doctorCount--;
+                                        Console.WriteLine("Doctor removed.");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Doctor not found.");
+                                    }
+
                                     break;
                                 case 0:
                                     Console.WriteLine("Back to Main Menu ");
